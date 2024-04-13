@@ -1,0 +1,36 @@
+version: '3.4'
+
+networks:
+    backend:
+    frontend:
+
+services:
+  testgateway:
+    container_name: test-gateway
+    image: ${DOCKER_REGISTRY-}testgateway
+    build:
+      context: .
+      dockerfile: TestGateway/Dockerfile
+    networks:
+      - backend
+      - frontend
+    ports:
+      - 18001:80
+
+  testpost:
+    container_name: test-post
+    image: ${DOCKER_REGISTRY-}testpost
+    build:
+      context: .
+      dockerfile: TestPost/Dockerfile
+    networks:
+      - backend
+
+  testcomment:
+    container_name: test-comment
+    image: ${DOCKER_REGISTRY-}testcomment
+    build:
+      context: .
+      dockerfile: TestComment/Dockerfile
+    networks:
+      - backend
