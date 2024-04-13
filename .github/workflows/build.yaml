@@ -13,13 +13,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build TestComment Docker image
-        run: docker build -t testcomment-image:latest .../TestComment
+        run: docker build -t testcomment-image:latest ./TestComment
 
       - name: Build TestGateway Docker image
-        run: docker build -t testgateway-image:latest .../TestGateway
+        run: docker build -t testgateway-image:latest ./TestGateway
 
       - name: Build TestPost Docker image
-        run: docker build -t testpost-image:latest .../TestPost
+        run: docker build -t testpost-image:latest ./TestPost
 
 
       - name: Log in to Docker Hub
