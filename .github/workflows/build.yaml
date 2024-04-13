@@ -12,8 +12,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build Docker image
-        run: docker build -t your-image-name:latest .
+      - name: Build TestComment Docker image
+        run: docker build -t testcomment-image:latest ./TestComment
+
+      - name: Build TestGateway Docker image
+        run: docker build -t testgateway-image:latest ./TestGateway
+
+      - name: Build TestPost Docker image
+        run: docker build -t testpost-image:latest ./TestPost
+
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
@@ -21,5 +28,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Push Docker image
-        run: docker push your-image-name:latest
+      - name: Push TestComment Docker image
+        run: docker push testcomment-image:latest
+
+      - name: Push TestGateway Docker image
+        run: docker push testgateway-image:latest
+
+      - name: Push TestPost Docker image
+        run: docker push testpost-image:latest
